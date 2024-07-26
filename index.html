@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유니버셜 링크 테스트 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>유니버셜 링크 테스트 페이지</h1>
+
+    <script>
+        function getMobileOperatingSystem() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // iOS detection
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'iOS';
+            }
+
+            // Android detection
+            if (/android/i.test(userAgent)) {
+                return 'Android';
+            }
+
+            return 'unknown';
+        }
+        
+        function redirectToUniversalLink() {
+            var pathname = window.location.pathname;
+            var query = window.location.search;
+            var os = getMobileOperatingSystem();
+            var universalLink;
+            
+                universalLink = 'https://dvxqkl58cmn21.cloudfront.net'+ pathname + query;
+
+            window.location.href = universalLink;
+        }
+        
+        document.addEventListener('DOMContentLoaded', redirectToUniversalLink);
+    </script>
+
+</body>
+</html>
+
